@@ -21,6 +21,15 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            
+            $table->string('main_image');
+            $table->date('birthday');
+            $table->boolean('sex');
+            $table->string('residence');
+            $table->string('x_user_name')->nullable();
+            $table->string('status_message');
+            $table->date('fan_career');
+            $table->text('self-introduction');
         });
     }
 
