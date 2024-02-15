@@ -21,6 +21,14 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'main_image',
+        'birthday',
+        'sex',
+        'residence',
+        'x_user_name',
+        'status_message',
+        'fan_career',
+        'self-introduction',
     ];
 
     /**
@@ -41,4 +49,35 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+    // SubImageに対するリレーション
+    public function sub_images()
+    {
+        return $this->hasMany(SubImage::class);
+    }
+    
+    // Answerに対するリレーション
+    public function answer()
+    {
+        return $this->hasOne(Answer::class);
+    }    
+    
+    // Memberに対するリレーション
+    public function members()
+    {
+        return $this->belongsToMany(Member::class);
+    }
+    
+    // Songに対するリレーション
+    public function songs()
+    {
+        return $this->belongsToMany(Song::class);
+    }
+    
+    // EventInfoに対するリレーション
+    public function event_info()
+    {
+        return $this->belongsToMany(EventInfo::class);
+    }
+    
 }
