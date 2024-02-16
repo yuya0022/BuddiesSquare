@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Event;
+use App\Models\Post;
 
 class PostController extends Controller
 {
@@ -21,5 +22,10 @@ class PostController extends Controller
             'selected_category' => $category,
             'selected_posts' => $event->posts()->with('user')->where('category_id', $category->id)->orderBy('updated_at', 'DESC')->paginate(10),
         ]);
+    }
+    
+    public function showDetail(Post $post)
+    {
+        return view('posts.detail')->with(['post' => $post]);
     }
 }

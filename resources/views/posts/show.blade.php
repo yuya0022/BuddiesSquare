@@ -7,14 +7,16 @@
         @endforeach
     </div>
     <a href="/posts/{{ $selected_event->id }}/{{ $selected_category->id }}/create">{{$selected_event->name}}　{{ $selected_category->name }} の投稿作成</a>
-    <div class="posts">
+    <div>
         @foreach($selected_posts as $post)
-            <div class="post">
+            <div>
                 <div class="icon">
                     <img src="{{ $post->user->main_image }}" alt="画像が読み込めません。"/>
                 </div>
                 <p>{{ $post->user->name }}</p>
-                <p>{{ $post->body }}</p>
+                <a href="/posts/{{ $post->id }}">
+                    <div>{{ $post->body }}</div>
+                </a>
             </div>
         @endforeach
     </div>
