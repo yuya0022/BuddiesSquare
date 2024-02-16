@@ -9,6 +9,13 @@ class Post extends Model
 {
     use HasFactory;
     
+    protected $fillable = [
+        'user_id',
+        'event_id',
+        'category_id',
+        'body',
+    ];
+    
     // Categoryに対するリレーション
     public function category()
     {

@@ -28,4 +28,28 @@ class PostController extends Controller
     {
         return view('posts.detail')->with(['post' => $post]);
     }
+    
+    public function create(Event $event, Category $category)
+    {
+        return view('posts.create')->with([
+            'event' => $event,
+            'category' => $category,
+        ]);
+    }
+    
+    public function store(Request $request)
+    {
+        $request->validate([
+            'body' => ['required', 'string', 'max:1000'],
+        ]);
+        
+        $post = Post::create([
+            'user_id' => $request->user()->id,
+            'event_id' => $request->event_id,
+            'category_id' => $request->category_id,
+            'body' => $request->body,
+        ]);
+        
+        return redirect('/posts/' . $post->id);
+    }
 }

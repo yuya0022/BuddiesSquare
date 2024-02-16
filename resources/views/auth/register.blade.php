@@ -131,7 +131,7 @@
             <div>
                 <x-input-label for="selfintroduction" :value="__('【必須】　自己紹介')" />
                 <textarea id="selfintroduction" name="selfintroduction"> {{ old('selfintroduction') }} </textarea>
-                <p>※ 1000字以内で以内で入力してください</p>
+                <p>※ 1000字以内で入力してください</p>
                 <x-input-error :messages="$errors->get('selfintroduction')" class="mt-2" />
             </div>
             
