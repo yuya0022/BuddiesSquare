@@ -6,7 +6,7 @@
                 <a href="/posts/{{ $event->id }}/1">●{{ $event->name }}</a>
                 <p>【日程・会場】</p>
                 <div>
-                    @foreach($event->event_info()->get() as $event_info)
+                    @foreach($event->event_info as $event_info)
                         <p>{{ $event_info->date }}  {{$event_info->venue}}</p>
                     @endforeach
                 </div>

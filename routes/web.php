@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function () {
 //PostControllerに関わるルーティング
 Route::controller(PostController::class)->middleware(['auth'])->group(function(){
     Route::get('/posts', 'index')->name('post.index');
+    Route::get('/posts/{event}/{category}', 'show')->name('post.show');
 });
 
 require __DIR__.'/auth.php';
