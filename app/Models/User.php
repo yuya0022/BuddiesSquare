@@ -80,4 +80,15 @@ class User extends Authenticatable
         return $this->belongsToMany(EventInfo::class);
     }
     
+    // Postに対するリレーション
+    public function posts()   
+    {
+        return $this->hasMany(Post::class);  
+    }
+    
+    // PostCommentに対するリレーション
+    public function post_comments()   
+    {
+        return $this->hasMany(PostComment::class);
+    }
 }

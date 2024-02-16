@@ -15,4 +15,16 @@ class Event extends Model
         return $this->hasMany(EventInfo::class);  
     }
     
+    // Postに対するリレーション
+    public function posts()   
+    {
+        return $this->hasMany(Post::class);  
+    }
+    
+    // ページネーション
+    public function getPaginateByLimit(int $limit_count = 10)
+    {
+        return $this->orderBy('id', 'DESC')->paginate($limit_count);
+    }
+    
 }
