@@ -14,6 +14,7 @@
                     <img src="{{ $post->user->main_image }}" alt="画像が読み込めません。"/>
                 </div>
                 <p>{{ $post->user->name }}</p>
+                <p>{{ \Carbon\Carbon::parse($post->user->birthday)->age }}歳</p>
                 <a href="/posts/{{ $post->id }}">
                     <div>{{ $post->body }}</div>
                 </a>

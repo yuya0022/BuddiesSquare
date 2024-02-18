@@ -52,4 +52,39 @@ class PostController extends Controller
         
         return redirect('/posts/' . $post->id);
     }
+    
+    public function edit(Post $post)
+    {
+        if (auth()->user()->id == $post->user_id) {
+            return view('posts.edit')->with(['post' => $post]);
+        } else {
+            return redirect('/posts/' . $post->id)->with('message', '※ 自分以外の投稿を編集することはできません');
+        }
+    }
+    
+    public function update(Request $request, Post $post)
+    {
+        if (auth()->user()->id == $post->user_id) {
+            $request->validate([
+                'body' => ['required', 'string', 'max:1000'],
+            ]);
+            
+            $post->fill(['body' => $request->body])->save();
+            
+            return redirect('/posts/' . $post->id);
+            
+        } else {
+            return redirect('/posts/' . $post->id)->with('message', '※ 自分以外の投稿を編集することはできません');
+        }
+    }
+    
+    public function delete(Post $post)
+    {
+        if (auth()->user()->id == $post->user_id) {
+            $post->delete();
+            return redirect('/posts/' . $post->event_id . '/' . $post->category_id);
+        } else {
+            return redirect('/posts/' . $post->id)->with('message', '※ 自分以外の投稿を削除することはできません');    
+        }
+    }
 }
