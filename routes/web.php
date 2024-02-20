@@ -34,10 +34,12 @@ Route::controller(PostController::class)->middleware(['auth'])->group(function()
     Route::get('/posts', 'index')->name('post.index');
     Route::post('/posts', 'store');
     Route::get('/posts/{post}', 'showDetail');
+    Route::post('/posts/{post}', 'comment');
     Route::put('/posts/{post}', 'update');
     Route::delete('/posts/{post}', 'delete');
     Route::get('/posts/{post}/edit', 'edit');
     Route::get('/posts/{event}/{category}', 'show');
+    Route::delete('/posts/comments/{comment}', 'commentDelete');
     Route::get('/posts/{event}/{category}/create', 'create');
 });
 

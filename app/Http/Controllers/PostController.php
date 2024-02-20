@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Event;
 use App\Models\Post;
+use App\Models\PostComment;
 
 class PostController extends Controller
 {
@@ -26,7 +27,10 @@ class PostController extends Controller
     
     public function showDetail(Post $post)
     {
-        return view('posts.detail')->with(['post' => $post]);
+        return view('posts.detail')->with([
+            'post' => $post,
+            'comments' => $post->post_comments()->with('user')->orderBy('created_at', 'DESC')->paginate(10),
+        ]);
     }
     
     public function create(Event $event, Category $category)
@@ -44,7 +48,7 @@ class PostController extends Controller
         ]);
         
         $post = Post::create([
-            'user_id' => $request->user()->id,
+            'user_id' => auth()->user()->id,
             'event_id' => $request->event_id,
             'category_id' => $request->category_id,
             'body' => $request->body,
@@ -87,4 +91,30 @@ class PostController extends Controller
             return redirect('/posts/' . $post->id)->with('message', '※ 自分以外の投稿を削除することはできません');    
         }
     }
+    
+    public function comment(Request $request, Post $post)
+    {
+        $request->validate([
+            'comment' => ['required', 'string', 'max:300'],
+        ]);
+        
+        PostComment::create([
+            'user_id' => auth()->user()->id,
+            'post_id' => $post->id,
+            'comment' => $request->comment,
+        ]);
+        
+        return redirect('/posts/' . $post->id);
+    }
+    
+    public function commentDelete(PostComment $comment)
+    {
+        if (auth()->user()->id == $comment->user_id) {
+            $comment->delete();
+            return redirect('/posts/' . $comment->post_id);
+        } else {
+            return redirect('/posts/' . $comment->post_id)->with('message', '※ 自分以外のコメントを削除することはできません');
+        }
+    }
+    
 }
