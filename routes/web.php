@@ -27,7 +27,16 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    
+    //メイン写真
+    Route::put('/main_image', [ProfileController::class, 'main_image_update']);
+    
+    //サブ写真
+    Route::post('/sub_images', [ProfileController::class, 'sub_image_store']);
+    Route::put('/sub_images/{sub_image}', [ProfileController::class, 'sub_image_update']);
+    Route::delete('/sub_images/{sub_image}', [ProfileController::class, 'sub_image_delete']);
 });
+
 
 //PostControllerに関わるルーティング
 Route::controller(PostController::class)->middleware(['auth'])->group(function(){

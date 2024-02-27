@@ -18,7 +18,7 @@
                 <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
             </div>
-    
+            
             <!-- パスワード -->
             <div class="mt-4">
                 <x-input-label for="password" :value="__('【必須】　パスワード')" />
@@ -45,16 +45,19 @@
             <!--プロフィール写真（メイン）-->
             <div>
                 <x-input-label for="main_image" :value="__('【必須】　プロフィール写真（メイン）')" />
-                <input id="main_image" type="file" name="main_image">
+                <input id="main_image" name="main_image" type="file" accept='image/*' onchange="previewImage(this, 1);">
+                <img id="preview_1" src="" style="max-width:200px;">
                 <x-input-error :messages="$errors->get('main_image')" class="mt-2" />
             </div>
             
             <!--プロフィール写真（サブ）-->
             <div>
                 <x-input-label for="sub_image" :value="__('プロフィール写真（サブ）')" />
-                <input id="sub_image" type="file" name="sub_images[]">
+                <input id="sub_image" name="sub_images[]" type="file" accept='image/*' onchange="previewImage(this, 2);">
+                <img id="preview_2" src="" style="max-width:200px;">
                 @for($i = 0; $i < 8; $i++)
-                    <input type="file" name="sub_images[]">
+                    <input name="sub_images[]" type="file" accept='image/*' onchange="previewImage(this, {{ $i + 3 }});">
+                    <img id="preview_{{ $i + 3 }}" src="" style="max-width:200px;">
                 @endfor
             </div>
             
@@ -86,7 +89,7 @@
                 <select id="residence" name="residence">
                     <option value="">選択してください</option>
                     @foreach($prefectures as $prefecture)
-                        <option value="{{$prefecture}}" @if(old('residence') === $prefecture) selected @endif>{{$prefecture}}</option>
+                        <option value="{{ $prefecture }}" @if(old('residence') === $prefecture) selected @endif>{{ $prefecture }}</option>
                     @endforeach
                 </select>
                 <x-input-error :messages="$errors->get('residence')" class="mt-2" />
@@ -118,9 +121,8 @@
                 <x-input-label for="members" :value="__('【必須】　推しメン')" />
                 <select multiple id="members" name="members[]">
                     @foreach($members as $member)
-                        <option value="{{ $member->id }}" 
-                                @if(!empty(old('members')) && in_array("$member->id", old('members'))) selected @endif>
-                        {{ $member->name }}
+                        <option value="{{ $member->id }}" @if(!empty(old('members')) && in_array("$member->id", old('members'))) selected @endif>
+                            {{ $member->name }}
                         </option>
                     @endforeach
                 </select>
@@ -129,10 +131,10 @@
             
             <!--自己紹介-->
             <div>
-                <x-input-label for="selfintroduction" :value="__('【必須】　自己紹介')" />
-                <textarea id="selfintroduction" name="selfintroduction"> {{ old('selfintroduction') }} </textarea>
+                <x-input-label for="self-introduction" :value="__('【必須】　自己紹介')" />
+                <textarea id="self-introduction" name="self-introduction"> {{ old('self-introduction') }} </textarea>
                 <p>※ 1000字以内で入力してください</p>
-                <x-input-error :messages="$errors->get('selfintroduction')" class="mt-2" />
+                <x-input-error :messages="$errors->get('self-introduction')" class="mt-2" />
             </div>
             
             <!--好きな楽曲-->
@@ -219,6 +221,8 @@
             </x-primary-button>
         </div>
     </form>
+    
+    
     <script>
     $(function () {
         $('select').multipleSelect({
@@ -231,5 +235,19 @@
             }
         });
     });
+    
+    function previewImage(obj, num)
+    {
+        if(obj.files.length === 0) {
+            document.getElementById(`preview_${num}`).src = ''
+            ;
+        } else {
+            var fileReader = new FileReader();
+        	fileReader.onload = (function() {
+        		document.getElementById(`preview_${num}`).src = fileReader.result;
+        	});
+        	fileReader.readAsDataURL(obj.files[0]);
+        }
+    }
     </script>
 </x-guest-layout>

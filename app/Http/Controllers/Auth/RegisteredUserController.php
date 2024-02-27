@@ -54,7 +54,7 @@ class RegisteredUserController extends Controller
             'status_message' => ['required', 'string', 'max:50'],
             // 'fan_career' はバリデーション不要
             'members' => ['required'],
-            'selfintroduction' => ['required', 'string', 'max:1000'],
+            'self-introduction' => ['required', 'string', 'max:1000'],
             'songs' => ['required'],
             // 'collection_of_eventinfo' はバリデーション不要
             'answer_1' => ['nullable', 'string', 'max:1000'],
@@ -78,7 +78,7 @@ class RegisteredUserController extends Controller
             'x_user_name' => $request->x_user_name,
             'status_message' => $request->status_message,
             'fan_career' => $request->fan_career,
-            'self-introduction' => $request->selfintroduction,
+            'self-introduction' => $request['self-introduction'],
         ]);
         
         //sub_imagesテーブルへの保存処理
