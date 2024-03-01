@@ -25,6 +25,7 @@
         @endif
     </div>
     
+    <!--エラーメッセージ-->
     <div>
         <p style="background-color:black"><font color="yellow">{{ session('message') }}</font></p>
     </div>

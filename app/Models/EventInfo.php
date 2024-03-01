@@ -24,4 +24,10 @@ class EventInfo extends Model
         return $this->belongsToMany(User::class);
     }
     
+    // MethodTradeに対するリレーション
+    public function method_trade()   
+    {
+        return $this->hasMany(MethodTrade::class);  
+    }
+    
 }

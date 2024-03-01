@@ -5,15 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Member extends Model
+class Series extends Model
 {
     use HasFactory;
     
-    // Userに対するリレーション
-    public function users()
-    {
-        return $this->belongsToMany(User::class);
-    }
+    //対応するテーブル名を明記
+    protected $table = 'series';
     
     // Pictureに対するリレーション
     public function pictures()   

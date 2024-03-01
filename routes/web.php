@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\TradeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -51,5 +52,14 @@ Route::controller(PostController::class)->middleware(['auth'])->group(function()
     Route::delete('/posts/comments/{comment}', 'commentDelete');
     Route::get('/posts/{event}/{category}/create', 'create');
 });
+
+//TradeControllerに関わるルーティング
+Route::controller(TradeController::class)->middleware(['auth'])->group(function(){
+    Route::get('/trades', 'index')->name('trade.index');
+    Route::get('/trades/create', 'create');
+    Route::get('/trades/{trade}', 'show');
+});
+
+
 
 require __DIR__.'/auth.php';

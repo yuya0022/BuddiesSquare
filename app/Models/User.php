@@ -91,4 +91,16 @@ class User extends Authenticatable
     {
         return $this->hasMany(PostComment::class);
     }
+    
+    // Tradeに対するリレーション
+    public function trades()   
+    {
+        return $this->hasMany(Trade::class);  
+    }
+    
+    // TradeCommentに対するリレーション
+    public function trade_comments()   
+    {
+        return $this->hasMany(TradeComment::class);  
+    }
 }
