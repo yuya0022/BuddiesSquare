@@ -56,6 +56,7 @@ Route::controller(PostController::class)->middleware(['auth'])->group(function()
 //TradeControllerに関わるルーティング
 Route::controller(TradeController::class)->middleware(['auth'])->group(function(){
     Route::get('/trades', 'index')->name('trade.index');
+    Route::post('/trades', 'store');
     Route::get('/trades/create', 'create');
     Route::get('/trades/{trade}', 'show');
 });

@@ -8,11 +8,14 @@
         <div>
             <x-input-label :value="__('【必須】　トレード方法')" />
             <select multiple name="methods[]">
-                <option value="0">郵送</option>
+                <option value="0" @if(!empty(old('methods')) && in_array("0", old('methods'))) selected @endif>郵送</option>
                 @foreach($collection_of_eventinfo as $eventinfo)
-                    <option value="{{ $eventinfo->id }}">{{ $eventinfo->event->name }}　{{ $eventinfo->date }}　{{ $eventinfo->venue }} </option>
+                    <option value="{{ $eventinfo->id }}" @if(!empty(old('methods')) && in_array("$eventinfo->id", old('methods'))) selected @endif>
+                        {{ $eventinfo->event->name }}　{{ $eventinfo->date }}　{{ $eventinfo->venue }} 
+                    </option>
                 @endforeach
             </select>
+            <x-input-error :messages="$errors->get('methods')" class="mt-2" />
         </div>
         
         <!--提供-->
@@ -30,7 +33,7 @@
                         @endforeach
                     </select>
                     
-                    <!--表示内容-->
+                    <!--シリーズ名選択の表示内容-->
                     @foreach($series_with_pictures as $series)
                         @php
                             $pictures_divided_by_member = $series->pictures->groupBy('member_id');
@@ -51,6 +54,8 @@
                     @endforeach
                 </div>
             @endfor
+            
+            <x-input-error :messages="$errors->get('offers')" class="mt-2" />
         </div>
 
         <!--要求-->
@@ -89,12 +94,16 @@
                     @endforeach
                 </div>
             @endfor
+            
+            <x-input-error :messages="$errors->get('requests')" class="mt-2" />
         </div>
         
         <!--コメントや注意事項-->
         <div>
             <x-input-label :value="__('コメントや注意事項')" />
-            <textarea name="note"></textarea>
+            <textarea name="note">{{ old('note') }}</textarea>
+            <p>※ 500字以内で入力してください</p>
+            <x-input-error :messages="$errors->get('note')" class="mt-2" />
         </div>
         
         <!--投稿ボタン-->

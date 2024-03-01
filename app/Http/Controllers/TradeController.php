@@ -46,4 +46,14 @@ class TradeController extends Controller
             'php_series_with_pictures' => json_encode(Series::has('pictures')->get()->pluck('id')->all() ),
         ]);
     }
+    
+    public function store(Request $request)
+    {
+        $request->validate([
+            'methods' => ['required'],
+            'offers' => ['required'],
+            'requests' => ['required'],
+            'note' => ['nullable', 'string', 'max:500'],
+        ]);
+    }
 }
