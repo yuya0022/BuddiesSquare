@@ -55,5 +55,33 @@ class TradeController extends Controller
             'requests' => ['required'],
             'note' => ['nullable', 'string', 'max:500'],
         ]);
+        
+        $trade = Trade::create([
+            'user_id' => auth()->user()->id,
+            'note' => $request->note,
+        ]);
+        
+        //method_tradeテーブルへの保存処理
+        foreach($request->methods as $value){
+            if($value == 0){
+                $trade->methods()->attach(1);
+            }else{
+                $trade->methods()->attach(2, ['event_info_id' => $value]);
+            }
+        }
+        
+        //picture_tradeテーブルへの保存処理
+        $offer_pictures = array_unique(array_reduce($request->offers, 'array_merge', []));
+        $request_pictures = array_unique(array_reduce($request->requests, 'array_merge', []));
+        
+        sort($offer_pictures);
+        sort($request_pictures);
+        
+        $trade->pictures()->attach($offer_pictures, ['kind' => 0]);
+        $trade->pictures()->attach($request_pictures, ['kind' => 1]);
+        
+        //リダイレクト
+        return redirect('/trades/'.$trade->id);
     }
+    
 }

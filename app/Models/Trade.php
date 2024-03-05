@@ -9,6 +9,11 @@ class Trade extends Model
 {
     use HasFactory;
     
+    protected $fillable = [
+        'user_id',
+        'note',
+    ];
+    
     // Userに対するリレーション
     public function user()
     {

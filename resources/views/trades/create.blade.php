@@ -18,80 +18,112 @@
             <x-input-error :messages="$errors->get('methods')" class="mt-2" />
         </div>
         
+        
+        
         <!--提供-->
         <div>
             <x-input-label :value="__('【必須】　提供')" />
             
-            @for($i = 1; $i <= 10; $i++)
-                <!--i番目（location i）-->
+            @for($location_num = 0; $location_num < 5; $location_num++)
+                
+                <!--location-$location_num-->
                 <div>
                     <!--シリーズ選択-->
-                    <select onchange="offerviewChange(this, {{ $i }});">
+                    <select id="offer_series_location-{{ $location_num }}" onchange="offerViewChange({{ $location_num }});"
+                            name="offer_series[location-{{ $location_num }}]">
                         <option value="">選択してください</option>
                         @foreach($series_with_pictures as $series)
-                            <option value="{{ $series->id }}">{{ $series->name }}</option>
+                            <option value="{{ $series->id }}" @if(old("offer_series." . "location-" . $location_num) == $series->id) selected @endif>
+                                {{ $series->name }}
+                            </option>
                         @endforeach
                     </select>
                     
-                    <!--シリーズ名選択の表示内容-->
+                    <!--シリーズ選択時の表示内容-->
                     @foreach($series_with_pictures as $series)
                         @php
                             $pictures_divided_by_member = $series->pictures->groupBy('member_id');
                         @endphp
                         
                         <!--各シリーズの表-->
-                        <div id="offerchart_{{ $i }}_{{ $series->id }}" style="display:none;">
+                        <div id="offer_chart_location-{{ $location_num }}_{{ $series->id }}" style="display:none;">
                             @foreach($pictures_divided_by_member as $pictures)
                                 <span>{{ $pictures[0]->member->name }}：</span>
                                 @foreach($pictures as $picture)
                                     <label>
-                                        <input type="checkbox" value="{{ $picture->id }}" name="offers[]">{{ $picture->type->name }}</input>
+                                        <input class="offer_checks_location-{{ $location_num }}" type="checkbox" 
+                                                value="{{ $picture->id }}" name="offers[location-{{ $location_num }}][]"
+                                                @if(!empty(old("offers." . "location-" . $location_num)) && 
+                                                    in_array("$picture->id", old("offers." . "location-" . $location_num)) ) checked @endif>
+                                            {{ $picture->type->name }}
+                                        </input>
                                     </label>
                                 @endforeach
                                 <br>
                             @endforeach
                         </div>
                     @endforeach
+                    
+                    <!--全解除ボタン-->
+                    <button id="offer_uncheck_location-{{ $location_num }}" type="button" onclick="offerUncheckAll({{ $location_num }});" style="display:none;">
+                        全解除
+                    </button>
                 </div>
             @endfor
             
             <x-input-error :messages="$errors->get('offers')" class="mt-2" />
         </div>
 
+
+
         <!--要求-->
         <div>
             <x-input-label :value="__('【必須】　要求')" />
             
-            @for($i = 1; $i <= 10; $i++)
-                <!--i番目（location i）--> 
+            @for($location_num = 0; $location_num < 5; $location_num++)
+                
+                <!--location-$location_num--> 
                 <div>
                     <!--シリーズ選択-->
-                    <select onchange="requestviewChange(this, {{ $i }});">
+                    <select id="request_series_location-{{ $location_num }}" onchange="requestViewChange({{ $location_num }});"
+                            name="request_series[location-{{ $location_num }}]">
                         <option value="">選択してください</option>
                         @foreach($series_with_pictures as $series)
-                            <option value="{{ $series->id }}">{{ $series->name }}</option>
+                            <option value="{{ $series->id }}" @if(old("request_series." . 'location-' . $location_num) == $series->id) selected @endif>
+                                {{ $series->name }}
+                            </option>
                         @endforeach
                     </select>
                     
-                    <!--表示内容-->
+                    <!--シリーズ選択時の表示内容-->
                     @foreach($series_with_pictures as $series)
                         @php
                             $pictures_divided_by_member = $series->pictures->groupBy('member_id');
                         @endphp
                         
                         <!--各シリーズの表-->
-                        <div id="requestchart_{{ $i }}_{{ $series->id }}" style="display:none;">
+                        <div id="request_chart_location-{{ $location_num }}_{{ $series->id }}" style="display:none;">
                             @foreach($pictures_divided_by_member as $pictures)
                                 <span>{{ $pictures[0]->member->name }}：</span>
                                 @foreach($pictures as $picture)
                                     <label>
-                                        <input type="checkbox" value="{{ $picture->id }}" name="requests[]">{{ $picture->type->name }}</input>
+                                        <input class="request_checks_location-{{ $location_num }}" type="checkbox" 
+                                                value="{{ $picture->id }}" name="requests[location-{{ $location_num }}][]"
+                                                @if(!empty(old("requests." . "location-" . $location_num)) && 
+                                                    in_array("$picture->id", old("requests." . "location-" . $location_num)) ) checked @endif>
+                                            {{ $picture->type->name }}
+                                        </input>
                                     </label>
                                 @endforeach
                                 <br>
                             @endforeach
                         </div>
                     @endforeach
+                    
+                    <!--全解除ボタン-->
+                    <button id="request_uncheck_location-{{ $location_num }}" type="button" onclick="requestUncheckAll({{ $location_num }});" style="display:none;">
+                        全解除
+                    </button>
                 </div>
             @endfor
             
@@ -125,32 +157,63 @@
         });
     });
     
-    function offerviewChange(obj, location_num){
-        const index = obj.selectedIndex;
-        const value = obj.options[index].value;
-        const js_series_with_pictures = <?php echo $php_series_with_pictures; ?>;
-        
-        for(i = 0; i < js_series_with_pictures.length; i++){
-            if(js_series_with_pictures[i] == value){
-                document.getElementById(`offerchart_${location_num}_${js_series_with_pictures[i]}`).style.display = "";
-            } else {
-                document.getElementById(`offerchart_${location_num}_${js_series_with_pictures[i]}`).style.display = "none";
-            }
+    function offerUncheckAll(location_num){
+        const elements = document.getElementsByClassName(`offer_checks_location-${location_num}`);
+        for (let i = 0; i < elements.length; i++) {
+            elements[i].checked = false;
         }
     }
     
-    function requestviewChange(obj, location_num){
-        const index = obj.selectedIndex;
-        const value = obj.options[index].value;
-        const js_series_with_pictures = <?php echo $php_series_with_pictures; ?>;
-        
-        for(i = 0; i < js_series_with_pictures.length; i++){
-            if(js_series_with_pictures[i] == value){
-                document.getElementById(`requestchart_${location_num}_${js_series_with_pictures[i]}`).style.display = "";
-            } else {
-                document.getElementById(`requestchart_${location_num}_${js_series_with_pictures[i]}`).style.display = "none";
-            }
+    function requestUncheckAll(location_num){
+        const elements = document.getElementsByClassName(`request_checks_location-${location_num}`);
+        for (let i = 0; i < elements.length; i++) {
+            elements[i].checked = false;
         }
     }
+    
+    function offerViewChange(location_num){
+        
+        // 表示の切り替え
+        const value = document.getElementById(`offer_series_location-${location_num}`).value;
+        const js_series_with_pictures = <?php echo $php_series_with_pictures; ?>;
+        for(i = 0; i < js_series_with_pictures.length; i++){
+            if(js_series_with_pictures[i] == value){
+                document.getElementById(`offer_chart_location-${location_num}_${js_series_with_pictures[i]}`).style.display = "";
+            } else {
+                document.getElementById(`offer_chart_location-${location_num}_${js_series_with_pictures[i]}`).style.display = "none";
+            }
+        }
+        
+        // 全解除ボタンを押す
+        document.getElementById(`offer_uncheck_location-${location_num}`).click();
+    }
+    
+    function requestViewChange(location_num){
+        
+        // 表示の切り替え
+        const value = document.getElementById(`request_series_location-${location_num}`).value;
+        const js_series_with_pictures = <?php echo $php_series_with_pictures; ?>;
+        for(i = 0; i < js_series_with_pictures.length; i++){
+            if(js_series_with_pictures[i] == value){
+                document.getElementById(`request_chart_location-${location_num}_${js_series_with_pictures[i]}`).style.display = "";
+            } else {
+                document.getElementById(`request_chart_location-${location_num}_${js_series_with_pictures[i]}`).style.display = "none";
+            }
+        }
+        
+        // 全解除ボタンを押す
+        document.getElementById(`request_uncheck_location-${location_num}`).click();
+    }
+    
+    window.onload = function() {
+        for(i = 0; i < 5; i++){
+            if(document.getElementById(`offer_series_location-${i}`).value){
+                document.getElementById(`offer_chart_location-${i}_${document.getElementById(`offer_series_location-${i}`).value}`).style.display = "";
+            }
+            if(document.getElementById(`request_series_location-${i}`).value){
+                document.getElementById(`request_chart_location-${i}_${document.getElementById(`request_series_location-${i}`).value}`).style.display = "";
+            }
+        }
+    };
     </script>
 </x-app-layout>
