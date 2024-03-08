@@ -116,9 +116,9 @@
             <x-input-error :messages="$errors->get('requests')" class="mt-2" />
         </div>
         
-        <!--コメントや注意事項-->
+        <!--注意事項など-->
         <div>
-            <x-input-label :value="__('コメントや注意事項')" />
+            <x-input-label :value="__('注意事項など')" />
             <textarea name="note">{{ old('note') }}</textarea>
             <p>※ 500字以内で入力してください</p>
             <x-input-error :messages="$errors->get('note')" class="mt-2" />

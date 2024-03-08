@@ -59,9 +59,11 @@ Route::controller(TradeController::class)->middleware(['auth'])->group(function(
     Route::post('/trades', 'store');
     Route::get('/trades/create', 'create');
     Route::get('/trades/{trade}', 'show');
+    Route::post('/trades/{trade}', 'comment');
     Route::put('/trades/{trade}', 'update');
     Route::delete('/trades/{trade}', 'delete');
     Route::get('/trades/{trade}/edit', 'edit');
+    Route::delete('/trades/comments/{comment}', 'commentDelete');
 });
 
 

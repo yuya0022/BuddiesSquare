@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\EventInfo;
 use App\Models\Series;
 use App\Models\Trade;
+use App\Models\TradeComment;
 use App\Models\Picture;
 use Carbon\Carbon;
 
@@ -33,6 +34,7 @@ class TradeController extends Controller
             'trade' => $trade,
             'offers_divided_by_series' => $trade->pictures()->with(['series', 'member', 'type'])->where('kind', 0)->get()->groupBy('series_id'),
             'requests_divided_by_series' => $trade->pictures()->with(['series', 'member', 'type'])->where('kind', 1)->get()->groupBy('series_id'),
+            'comments' => $trade->trade_comments()->with('user')->orderBy('created_at', 'DESC')->paginate(10),
         ]);
     }
     
@@ -209,6 +211,31 @@ class TradeController extends Controller
             return redirect('/trades');
         } else {
             return redirect('/trades/' . $trade->id)->with('message', '※ 自分以外の投稿を削除することはできません');    
+        }
+    }
+    
+    public function comment(Request $request, Trade $trade)
+    {
+        $request->validate([
+            'comment' => ['required', 'string', 'max:300'],
+        ]);
+        
+        TradeComment::create([
+            'user_id' => auth()->user()->id,
+            'trade_id' => $trade->id,
+            'comment' => $request->comment,
+        ]);
+        
+        return redirect('/trades/' . $trade->id);
+    }
+    
+    public function commentDelete(TradeComment $comment)
+    {
+        if(auth()->user()->id == $comment->user_id){
+            $comment->delete();
+            return redirect('/trades/' . $comment->trade_id);
+        } else {
+            return redirect('/trades/' . $comment->trade_id)->with('message', '※ 自分以外のコメントを削除することはできません');
         }
     }
 }
