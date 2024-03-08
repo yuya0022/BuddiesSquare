@@ -1,16 +1,17 @@
 <x-app-layout>
-    
-    <h1>生写真トレード投稿作成</h1>
-    <form action="/trades" method="POST">
+
+    <h1>生写真トレード投稿編集ページ</h1>
+    <form action="/trades/{{ $trade->id }}" method="POST">
         @csrf
+        @method('PUT')
         
         <!--トレード方法-->
         <div>
             <x-input-label :value="__('【必須】　トレード方法')" />
             <select multiple name="methods[]">
-                <option value="0" @if(!empty(old('methods')) && in_array("0", old('methods'))) selected @endif>郵送</option>
+                <option value="0" @if(in_array("0", $selected_methods)) selected @endif>郵送</option>
                 @foreach($collection_of_eventinfo as $eventinfo)
-                    <option value="{{ $eventinfo->id }}" @if(!empty(old('methods')) && in_array("$eventinfo->id", old('methods'))) selected @endif>
+                    <option value="{{ $eventinfo->id }}" @if(in_array("$eventinfo->id", $selected_methods)) selected @endif>
                         {{ $eventinfo->event->name }}　{{ $eventinfo->date }}　{{ $eventinfo->venue }} 
                     </option>
                 @endforeach
@@ -31,7 +32,7 @@
                             name="offer_series[location-{{ $location_num }}]">
                         <option value="">選択してください</option>
                         @foreach($series_with_pictures as $series)
-                            <option value="{{ $series->id }}" @if(old("offer_series." . "location-" . $location_num) == $series->id) selected @endif>
+                            <option value="{{ $series->id }}" @if($selected_offer_series["location-" . $location_num] == $series->id) selected @endif>
                                 {{ $series->name }}
                             </option>
                         @endforeach
@@ -51,8 +52,9 @@
                                     <label>
                                         <input class="offer_checks_location-{{ $location_num }}" type="checkbox" 
                                                 value="{{ $picture->id }}" name="offers[location-{{ $location_num }}][]"
-                                                @if(!empty(old("offers." . "location-" . $location_num)) && 
-                                                    in_array("$picture->id", old("offers." . "location-" . $location_num)) ) checked @endif>
+                                                @if(!empty($selected_offers["location-" . $location_num]) && 
+                                                    in_array("$picture->id", $selected_offers["location-" . $location_num])) checked @endif>
+                                                                                
                                             {{ $picture->type->name }}
                                         </input>
                                     </label>
@@ -61,12 +63,17 @@
                             @endforeach
                         </div>
                     @endforeach
+                    
+                    <!--全解除ボタン-->
+                    <button id="offer_uncheck_location-{{ $location_num }}" type="button" onclick="offerUncheckAll({{ $location_num }});" style="display:none;">
+                        全解除
+                    </button>
                 </div>
             @endfor
             
             <x-input-error :messages="$errors->get('offers')" class="mt-2" />
         </div>
-
+        
         <!--要求-->
         <div>
             <x-input-label :value="__('【必須】　要求')" />
@@ -80,7 +87,7 @@
                             name="request_series[location-{{ $location_num }}]">
                         <option value="">選択してください</option>
                         @foreach($series_with_pictures as $series)
-                            <option value="{{ $series->id }}" @if(old("request_series." . 'location-' . $location_num) == $series->id) selected @endif>
+                            <option value="{{ $series->id }}" @if($selected_request_series["location-" . $location_num] == $series->id) selected @endif>
                                 {{ $series->name }}
                             </option>
                         @endforeach
@@ -100,8 +107,8 @@
                                     <label>
                                         <input class="request_checks_location-{{ $location_num }}" type="checkbox" 
                                                 value="{{ $picture->id }}" name="requests[location-{{ $location_num }}][]"
-                                                @if(!empty(old("requests." . "location-" . $location_num)) && 
-                                                    in_array("$picture->id", old("requests." . "location-" . $location_num)) ) checked @endif>
+                                                @if(!empty($selected_requests["location-" . $location_num]) && 
+                                                    in_array("$picture->id", $selected_requests["location-" . $location_num])) checked @endif>
                                             {{ $picture->type->name }}
                                         </input>
                                     </label>
@@ -110,6 +117,11 @@
                             @endforeach
                         </div>
                     @endforeach
+                    
+                    <!--全解除ボタン-->
+                    <button id="request_uncheck_location-{{ $location_num }}" type="button" onclick="requestUncheckAll({{ $location_num }});" style="display:none;">
+                        全解除
+                    </button>
                 </div>
             @endfor
             
@@ -119,17 +131,18 @@
         <!--コメントや注意事項-->
         <div>
             <x-input-label :value="__('コメントや注意事項')" />
-            <textarea name="note">{{ old('note') }}</textarea>
+            <textarea name="note">{{ $trade->note }}</textarea>
             <p>※ 500字以内で入力してください</p>
             <x-input-error :messages="$errors->get('note')" class="mt-2" />
         </div>
         
-        <!--投稿ボタン-->
+        <!--キャンセル・保存ボタン-->
         <div>
-            <input type="submit" value="投稿する"/>
+            <a href="/trades/{{ $trade->id }}">キャンセル</a>
+            <input type="submit" value="保存する"/>
         </div>
     </form>
-    
+ 
     <script async>
     $(function () {
         $('select').multipleSelect({
@@ -141,7 +154,7 @@
                 return '全て選択されています';
             }
         });
-    });
+    }); 
     
     function offerUncheckAll(location_num){
         const elements = document.getElementsByClassName(`offer_checks_location-${location_num}`);
@@ -171,7 +184,7 @@
         }
         
         // 全解除ボタンを押す
-        offerUncheckAll(location_num);
+        document.getElementById(`offer_uncheck_location-${location_num}`).click();
     }
     
     function requestViewChange(location_num){
@@ -188,7 +201,7 @@
         }
         
         // 全解除ボタンを押す
-        requestUncheckAll(location_num);
+        document.getElementById(`request_uncheck_location-${location_num}`).click();
     }
     
     window.onload = function() {

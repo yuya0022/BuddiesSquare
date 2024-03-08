@@ -63,4 +63,31 @@
             <p>{{ $trade->note }}</p>
         </div>    
     </div>
+    
+    <!--編集ボタン-->
+    @if(Auth::user()->id == $trade->user_id)
+        <div>
+            <a href="/trades/{{ $trade->id }}/edit">編集する</a>
+        </div>
+        <form action="/trades/{{ $trade->id }}" id="form_{{ $trade->id }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button type="button" onclick="deleteTrade({{ $trade->id }})">削除する</button>
+        </form>
+    @endif
+    
+    <!--エラーメッセージ-->
+    <div>
+        <p style="background-color:black"><font color="yellow">{{ session('message') }}</font></p>
+    </div>
+    
+    <script>
+        function deleteTrade(id) {
+            'use strict'
+    
+            if (confirm('削除すると復元できません。\n本当に削除しますか？')) {
+                document.getElementById(`form_${id}`).submit();
+            }
+        }
+    </script>
 </x-app-layout>
