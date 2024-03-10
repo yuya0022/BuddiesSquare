@@ -15,16 +15,87 @@ class TradeController extends Controller
 {
     public function index()
     {
+        $today = Carbon::today()->format('Y-m-d');
+        
+        $offer_series = array();
+        $request_series = array();
+        for($i = 0; $i < 5; $i++){
+            $offer_series['location-' . $i] = NULL;
+            $request_series['location-' . $i] = NULL;
+        }
+        
         return view('trades.index')->with([
-            'trades' => Trade::with([
-                            'user',
-                            'methods',
-                            'pictures' => [
-                                'series',
-                                'member',
-                                'type'
-                            ]
-                        ])->orderBy('updated_at', 'DESC')->paginate(10),
+            'collection_of_eventinfo' => EventInfo::with('event')->whereDate('date', '>=', $today)->get(),
+            'series_with_pictures' => Series::has('pictures')->with(['pictures' => ['member', 'type']])->get(),
+            'php_series_with_pictures' => json_encode(Series::has('pictures')->get()->pluck('id')->all() ),
+            'trades' => Trade::with(['user', 'methods', 'pictures' => ['series', 'member', 'type']])->orderBy('updated_at', 'DESC')->paginate(10),
+            'offer_series' => $offer_series,
+            'request_series' => $request_series,
+        ]);
+    }
+    
+    public function search(Request $request){
+        
+        //$offer_pictures, $request_picturesを定義
+        $offer_pictures = NULL;
+        $request_pictures = NULL;
+        if(isset($request->offers)){
+            $offer_pictures = array_unique(array_reduce($request->offers, 'array_merge', []));
+        }
+        if(isset($request->requests)){
+            $request_pictures = array_unique(array_reduce($request->requests, 'array_merge', []));
+        }
+        
+        //$methodsを定義
+        $methods = $request->methods;
+        
+        //条件検索
+        $trades = Trade::with(['user', 'methods', 'pictures' => ['series', 'member', 'type']])
+                    ->when($methods, function ($query) use ($methods){
+                        
+                        //$method_mail, $method_realを定義
+                        $method_mail = array();
+                        $method_real = $methods;
+                        if(in_array(0, $methods)){
+                        	array_push($method_mail, 1);
+                        	$method_real = array_diff($method_real, array(0));
+                        }
+                        
+                        //methodに関する条件を記述
+                        return $query->where(function ($q) use ($method_mail, $method_real){
+                            $q->whereHas('methods', function($qq) use($method_mail){
+                                    $qq->whereIn('method_trade.method_id', $method_mail);
+                                })
+                            ->orWhereHas('methods', function($qq) use($method_real){
+                                    $qq->where('method_trade.method_id', 2)->whereIn('method_trade.event_info_id', $method_real);  
+                                });
+                        });
+                    })
+                    ->when($offer_pictures, function ($query) use ($offer_pictures){
+                        return $query->whereHas('pictures', function ($q) use ($offer_pictures){
+                            $q->where('picture_trade.kind', 1)->whereIn('picture_trade.picture_id', $offer_pictures);
+                        });
+                    })
+                    ->when($request_pictures, function ($query) use ($request_pictures){
+                        return $query->whereHas('pictures', function ($q) use ($request_pictures){
+                             $q->where('picture_trade.kind', 0)->whereIn('picture_trade.picture_id', $request_pictures);
+                        });
+                    })
+                    ->orderBy('updated_at', 'DESC')->paginate(10);
+        
+        //viewを返却
+        $today = Carbon::today()->format('Y-m-d');
+        
+        return view('trades.index')->with([
+            'collection_of_eventinfo' => EventInfo::with('event')->whereDate('date', '>=', $today)->get(),
+            'series_with_pictures' => Series::has('pictures')->with(['pictures' => ['member', 'type']])->get(),
+            'php_series_with_pictures' => json_encode(Series::has('pictures')->get()->pluck('id')->all() ),
+            'trades' => $trades,
+            'methods' => $request->methods, 
+            'offer_series' => $request->offer_series,
+            'request_series' => $request->request_series,
+            'offers' => $request->offers,
+            'requests' => $request->requests,
         ]);
     }
     
