@@ -7,11 +7,15 @@
     <!--トレード投稿-->
     <div>
         <!--投稿者情報-->
-        <div class="icon">
-            <img src="{{ $trade->user->main_image }}" alt="画像が読み込めません。"/>
-        </div>
-        <p>{{ $trade->user->name }}</p>
-        <p>{{ \Carbon\Carbon::parse($trade->user->birthday)->age }}歳</p>
+        <a href="/profile/{{ $trade->user->id }}">
+            <div>
+                <div class="icon">
+                    <img src="{{ $trade->user->main_image }}" alt="画像が読み込めません。"/>
+                </div>
+                <p>{{ $trade->user->name }}</p>
+                <p>{{ \Carbon\Carbon::parse($trade->user->birthday)->age }}歳</p>
+            </div>
+        </a>
         
         <div>
             <!--トレード方法-->
@@ -105,11 +109,16 @@
     <!--コメント一覧-->
     <div>
         @foreach($comments as $comment)
-            <div class="icon">
-                <img src="{{ $comment->user->main_image }}" alt="画像が読み込めません。"/>
-            </div>
-            <p>{{ $comment->user->name }}</p>
-            <p>{{ \Carbon\Carbon::parse($comment->user->birthday)->age }}歳</p>
+            <a href="/profile/{{ $comment->user->id }}">
+                <div>
+                    <div class="icon">
+                        <img src="{{ $comment->user->main_image }}" alt="画像が読み込めません。"/>
+                    </div>
+                    <p>{{ $comment->user->name }}</p>
+                    <p>{{ \Carbon\Carbon::parse($comment->user->birthday)->age }}歳</p>
+                </div>
+            </a>
+            
             <div>{{ $comment->comment }}</div>
             @if(Auth::user()->id == $comment->user_id)
                 <form action="/trades/comments/{{ $comment->id }}" id="comment_form_{{ $comment->id }}" method="POST">

@@ -6,11 +6,16 @@
     <!--投稿-->
     <div>
         <div>
-            <div class="icon">
-                <img src="{{ $post->user->main_image }}" alt="画像が読み込めません。"/>
-            </div>
-            <p>{{ $post->user->name }}</p>
-            <p>{{ \Carbon\Carbon::parse($post->user->birthday)->age }}歳</p>
+            <a href="/profile/{{ $post->user->id }}">
+                <div>
+                    <div class="icon">
+                        <img src="{{ $post->user->main_image }}" alt="画像が読み込めません。"/>
+                    </div>
+                    <p>{{ $post->user->name }}</p>
+                    <p>{{ \Carbon\Carbon::parse($post->user->birthday)->age }}歳</p>
+                </div>    
+            </a>
+            
             <div class="post">{{ $post->body }}</div>
         </div>
         @if(Auth::user()->id == $post->user_id)
@@ -42,24 +47,30 @@
         <input type="submit" value="コメントする"/>
     </form>
     
+    <!--コメントの件数表示-->
+    @if (count($comments) > 0)
+        <p>全{{ $comments->total() }}件中  
+           {{ ($comments->currentPage() - 1) * $comments->perPage() + 1 }} - 
+           {{ ($comments->currentPage() - 1) * $comments->perPage() + count($comments) }}件のコメントが表示されています。</p>
+    @else
+        <p>コメントがありません。</p>
+    @endif
+    
     <!--コメント一覧-->
     <div>
-        @if (count($comments) > 0)
-            <p>全{{ $comments->total() }}件中  
-               {{ ($comments->currentPage() - 1) * $comments->perPage() + 1 }} - 
-               {{ ($comments->currentPage() - 1) * $comments->perPage() + count($comments) }}件のコメントが表示されています。</p>
-        @else
-            <p>コメントがありません。</p>
-        @endif
-        
         @foreach($comments as $comment)
             <div>
                 <div>
-                    <div class="icon">
-                        <img src="{{ $comment->user->main_image }}" alt="画像が読み込めません。"/>
-                    </div>
-                    <p>{{ $comment->user->name }}</p>
-                    <p>{{ \Carbon\Carbon::parse($comment->user->birthday)->age }}歳</p>
+                    <a href="/profile/{{ $comment->user->id }}">
+                        <div>
+                            <div class="icon">
+                                <img src="{{ $comment->user->main_image }}" alt="画像が読み込めません。"/>
+                            </div>
+                            <p>{{ $comment->user->name }}</p>
+                            <p>{{ \Carbon\Carbon::parse($comment->user->birthday)->age }}歳</p>
+                        </div>
+                    </a>
+                    
                     <div>{{ $comment->comment }}</div>
                 </div>
                 @if(Auth::user()->id == $comment->user_id)

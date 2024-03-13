@@ -135,11 +135,15 @@
         @foreach($trades as $trade)
         
             <!--投稿者情報-->
-            <div class="icon">
-                <img src="{{ $trade->user->main_image }}" alt="画像が読み込めません。"/>
-            </div>
-            <p>{{ $trade->user->name }}</p>
-            <p>{{ \Carbon\Carbon::parse($trade->user->birthday)->age }}歳</p>
+            <a href="/profile/{{ $trade->user->id }}">
+                <div>
+                    <div class="icon">
+                        <img src="{{ $trade->user->main_image }}" alt="画像が読み込めません。"/>
+                    </div>
+                    <p>{{ $trade->user->name }}</p>
+                    <p>{{ \Carbon\Carbon::parse($trade->user->birthday)->age }}歳</p>
+                </div>
+            </a>
             
             <!--投稿内容-->
             <a href="/trades/{{ $trade->id }}">

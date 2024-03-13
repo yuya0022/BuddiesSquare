@@ -7,6 +7,7 @@ use App\Models\EventInfo;
 use App\Models\Member;
 use App\Models\Song;
 use App\Models\SubImage;
+use App\Models\User;
 use Cloudinary;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -94,6 +95,11 @@ class ProfileController extends Controller
         return Redirect::to('/');
     }
     
+    // プロフィール閲覧
+    public function show(User $user)
+    {
+        return view('profile.show')->with(['user' => $user]);
+    }
     
     // メイン写真
     public function main_image_update(Request $request)
@@ -138,4 +144,5 @@ class ProfileController extends Controller
         
         return Redirect::route('profile.edit');
     }
+    
 }
