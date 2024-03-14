@@ -10,6 +10,9 @@ class Trade extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    use \Askedio\SoftCascade\Traits\SoftCascadeTrait;
+     
+    protected $softCascade = ['trade_comments']; 
     
     protected $fillable = [
         'user_id',

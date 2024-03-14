@@ -10,6 +10,9 @@ class Post extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    use \Askedio\SoftCascade\Traits\SoftCascadeTrait;
+    
+    protected $softCascade = ['post_comments'];
     
     protected $fillable = [
         'user_id',

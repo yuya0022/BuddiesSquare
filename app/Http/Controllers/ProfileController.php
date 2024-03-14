@@ -98,7 +98,11 @@ class ProfileController extends Controller
     // プロフィール閲覧
     public function show(User $user)
     {
-        return view('profile.show')->with(['user' => $user]);
+        if($user->id == auth()->user()->id){
+            return redirect('/profile');
+        } else {
+            return view('profile.show')->with(['user' => $user]);
+        }
     }
     
     // メイン写真

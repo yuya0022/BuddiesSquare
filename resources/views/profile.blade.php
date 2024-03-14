@@ -1,5 +1,15 @@
 <x-app-layout>
     
+    <!--プロフィール編集ページへの導線-->
+    <div>
+        <a href="/profile/edit">編集する</a>
+    </div>
+    
+    
+    @php
+        $user = Auth::user();
+    @endphp
+    
     <!--メイン写真-->
     <div>
          <x-input-label :value="__('プロフィール写真（メイン）')" />
