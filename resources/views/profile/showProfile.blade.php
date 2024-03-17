@@ -1,5 +1,10 @@
 <x-app-layout>
     
+    <!--チャットページへの導線-->
+    <div>
+        <a href="/chat/{{ $user->id }}">{{ $user->name }}さん とチャットする</a>
+    </div>
+    
     <!--メイン写真-->
     <div>
          <x-input-label :value="__('プロフィール写真（メイン）')" />

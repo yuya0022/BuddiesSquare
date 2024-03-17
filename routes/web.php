@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TradeController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,7 +32,7 @@ Route::controller(ProfileController::class)->middleware('auth')->group(function 
     Route::get('/profile/edit', 'edit')->name('profile.edit');
     
     //プロフィール閲覧
-    Route::get('/profile/{user}', 'show')->name('profile.show');
+    Route::get('/profile/{user}', 'showProfile');
     
     //メイン写真
     Route::put('/main_image', 'main_image_update');
@@ -71,6 +72,9 @@ Route::controller(TradeController::class)->middleware(['auth'])->group(function(
     Route::delete('/trades/comments/{comment}', 'commentDelete');
 });
 
-
+//ChatControllerに関わるルーティング
+Route::get('/chat', [ChatController::class, 'index'])->name('chat.index')->middleware('auth');
+Route::post('/chat', [ChatController::class, 'sendMessage']);
+Route::get('/chat/{user}', [ChatController::class, 'openChat']);
 
 require __DIR__.'/auth.php';

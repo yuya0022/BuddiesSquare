@@ -15,6 +15,9 @@
                     <x-nav-link :href="route('profile')" :active="request()->routeIs('profile')">
                         {{ __('マイページ') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('chat.index')" :active="request()->routeIs('chat.index')">
+                        {{ __('チャット') }}
+                    </x-nav-link>
                     <x-nav-link :href="route('post.index')" :active="request()->routeIs('post.index')">
                         {{ __('ライブ・イベント') }}
                     </x-nav-link>

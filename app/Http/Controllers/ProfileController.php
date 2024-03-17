@@ -96,12 +96,12 @@ class ProfileController extends Controller
     }
     
     // プロフィール閲覧
-    public function show(User $user)
+    public function showProfile(User $user)
     {
         if($user->id == auth()->user()->id){
             return redirect('/profile');
         } else {
-            return view('profile.show')->with(['user' => $user]);
+            return view('profile.showProfile')->with(['user' => $user]);
         }
     }
     
