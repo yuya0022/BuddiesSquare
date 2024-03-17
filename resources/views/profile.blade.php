@@ -1,14 +1,16 @@
 <x-app-layout>
     
+    @php
+        $user = Auth::user();
+    @endphp
+    
+    <!--投稿・コメント一覧への導線-->
+    <a href="/possessions/{{ $user->id }}">自身の投稿・コメント一覧</a>
+    
     <!--プロフィール編集ページへの導線-->
     <div>
         <a href="/profile/edit">編集する</a>
     </div>
-    
-    
-    @php
-        $user = Auth::user();
-    @endphp
     
     <!--メイン写真-->
     <div>

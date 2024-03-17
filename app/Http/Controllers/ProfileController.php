@@ -105,6 +105,40 @@ class ProfileController extends Controller
         }
     }
     
+    //ある人の、投稿・コメント一覧を閲覧
+    public function showPossessions(User $user)
+    {
+        $posts = $user->posts()->orderBy('updated_at', 'DESC')->paginate(5, ['*'], 'postPage')->appends([
+            'post_commentPage' => \Request::get('post_commentPage'),
+            'tradePage' => \Request::get('tradePage'),
+            'trade_commentPage' => \Request::get('trade_commentPage'),
+        ]);
+        $post_comments = $user->post_comments()->with(['post'])->orderBy('updated_at', 'DESC')->paginate(5, ['*'], 'post_commentPage')->appends([
+            'postPage' => \Request::get('postPage'),
+            'tradePage' => \Request::get('tradePage'),
+            'trade_commentPage' => \Request::get('trade_commentPage'),
+        ]);
+        $trades = $user->trades()->with(['user', 'methods', 'pictures' => ['series', 'member', 'type']])
+                ->orderBy('updated_at', 'DESC')->paginate(5, ['*'], 'tradePage')->appends([
+                    'postPage' => \Request::get('postPage'),
+                    'post_commentPage' => \Request::get('post_commentPage'),
+                    'trade_commentPage' => \Request::get('trade_commentPage'),
+                ]);
+        $trade_comments = $user->trade_comments()->with(['trade'])->orderBy('updated_at', 'DESC')->paginate(5, ['*'], 'trade_commentPage')->appends([
+            'postPage' => \Request::get('postPage'),
+            'post_commentPage' => \Request::get('post_commentPage'),
+            'tradePage' => \Request::get('tradePage'),    
+        ]);
+        
+        return view('profile.showPossessions')->with([
+            'posts' => $posts, 
+            'post_comments' => $post_comments,
+            'trades' => $trades,
+            'trade_comments' => $trade_comments,
+        ]);
+    }
+    
+    
     // メイン写真
     public function main_image_update(Request $request)
     {

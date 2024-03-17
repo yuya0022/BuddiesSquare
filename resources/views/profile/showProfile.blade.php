@@ -1,5 +1,8 @@
 <x-app-layout>
     
+    <!--投稿・コメント一覧への導線-->
+    <a href="/possessions/{{ $user->id }}">{{ $user->name }}さんの投稿・コメント一覧</a>
+    
     <!--チャットページへの導線-->
     <div>
         <a href="/chat/{{ $user->id }}">{{ $user->name }}さん とチャットする</a>

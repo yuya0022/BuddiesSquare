@@ -34,6 +34,9 @@ Route::controller(ProfileController::class)->middleware('auth')->group(function 
     //プロフィール閲覧
     Route::get('/profile/{user}', 'showProfile');
     
+    //ある人の、投稿・コメント一覧を閲覧
+    Route::get('/possessions/{user}', 'showPossessions');
+    
     //メイン写真
     Route::put('/main_image', 'main_image_update');
     

@@ -141,7 +141,7 @@
                 return '全て選択されています';
             }
         });
-    });
+    }); 
     
     function offerUncheckAll(location_num){
         const elements = document.getElementsByClassName(`offer_checks_location-${location_num}`);
