@@ -21,13 +21,16 @@
     </head>
     <body class="font-sans text-gray-900 antialiased">
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
-            <div>
-                <a href="/">
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-                </a>
+            
+            <div class="w-full sm:max-w-xl mt-6 px-6 py-4">
+                <div class="return_top_page">
+                    <a href="/" class="text-sm text-gray-700 dark:text-gray-500 underline">
+                        トップページに戻る
+                    </a>
+                </div>
             </div>
 
-            <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md sm:rounded-lg">
+            <div class="w-full sm:max-w-xl mt-6 px-6 py-4 bg-white shadow-md sm:rounded-lg">
                 {{ $slot }}
             </div>
         </div>

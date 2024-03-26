@@ -1,12 +1,14 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            <a href="/profile/{{ $user->id }}">
-                <div class="icon">
-                    <img src="{{ $user->main_image }}" alt="画像が読み込めません。"/>
-                </div>
-            </a>
-            {{ $user->name }}さん とのチャット
+            <div class='icon_container'>
+                <a href="/profile/{{ $user->id }}">
+                    <div class="icon">
+                        <img src="{{ $user->main_image }}" alt="画像が読み込めません。"/>
+                    </div>
+                </a>
+            </div>
+            <p>{{ $user->name }}さん&nbsp;とのチャット</p>
         </h2>
     </x-slot>
 

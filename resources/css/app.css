@@ -2,23 +2,477 @@
 @tailwind components;
 @tailwind utilities;
 
+/*全体*/
+  /*アイコン画像*/
+  .icon_container{
+    width: 60px;
+    height: 60px;
+  }
+  
+  .icon{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .icon img{
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+  }
+  
+  /*ページネーション*/
+  .pagination{
+      text-align: center;
+      font-size: 20px;
+      margin-bottom: 20px;
+  }
+  
+  .pagination li{
+      display: inline-block;
+  }
+  
+  /*ボタン*/
+  .update_delete_container{
+    width: 215px;
+    margin-top: 20px;
+    margin-right: 0;
+    margin-left: auto;
+  }
+  
+  .delete_container{
+    width: 106px;
+    margin-top: 20px;
+    margin-right: 0;
+    margin-left: auto;
+  }
+  
+  .submit_container{
+    width: 106px;
+    margin-right: 0;
+    margin-left: auto;
+  }
+  
+  .submit_container_2{
+    width: 82px;
+    margin-right: 0;
+    margin-left: auto;
+  }
+  
+  .comment_container{
+    width: 119px;
+    margin-right: 0;
+    margin-left: auto;
+  }
+  
+  .update_button_style{
+    transition: .3s; /* 変化時間 0.3秒 */
+    padding: 5px 24px; /* 内側の余白設定 */
+    border-radius: 10px; /* 要素の角を丸くする */
+    background-color: #039403; /* 背景色指定 */
+    text-decoration: none; /* aタグの下線を非表示に */
+    font-size: 16px;
+    color: white;
+  }
+  
+  .update_button_style:hover{
+    transition: .3s; /* 変化時間 0.3秒 */
+    background-color: #027D02; /* 背景色 */
+  }
+  
+  .add_button_style{
+    transition: .3s; /* 変化時間 0.3秒 */
+    padding: 5px 24px; /* 内側の余白設定 */
+    border-radius: 10px; /* 要素の角を丸くする */
+    background-color: #336EF5; /* 背景色指定 */
+    text-decoration: none; /* aタグの下線を非表示に */
+    font-size: 16px;
+    color: white;
+  }
+  
+  .add_button_style:hover{
+    transition: .3s; /* 変化時間 0.3秒 */
+    background-color: #0B4CE2; /* 背景色 */
+  }
+  
+  .delete_button{
+    transition: .3s; /* 変化時間 0.3秒 */
+    padding: 2.6px 24px; /* 内側の余白設定 */
+    border-radius: 10px; /* 要素の角を丸くする */
+    background-color: #E3002A; /* 背景色指定 */
+    color: white;
+    font-size: 16px;
+  }
+  
+  .delete_button:hover{
+    transition: .3s; /* 変化時間 0.3秒 */
+    background-color: #C80126; /* 背景色 */
+  }
+  
+  .submit_button{
+    transition: .3s; /* 変化時間 0.3秒 */
+    padding: 2.6px 24px; /* 内側の余白設定 */
+    border-radius: 10px; /* 要素の角を丸くする */
+    background-color: #336EF5; /* 背景色指定 */
+    color: white;
+    font-size: 16px;
+  }
+  
+  .submit_button:hover{
+    transition: .3s; /* 変化時間 0.3秒 */
+    background-color: #0B4CE2; /* 背景色 */
+  }
 
-/*アイコン画像*/
-.icon{
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  overflow: hidden;
-  position: relative;
-}
+  .comment_button{
+    transition: .3s; /* 変化時間 0.3秒 */
+    padding: 2.6px 24px; /* 内側の余白設定 */
+    border-radius: 10px; /* 要素の角を丸くする */
+    background-color: #336EF5; /* 背景色指定 */
+    color: white;
+    font-size: 16px;
+  }
+  
+  .comment_button:hover{
+    transition: .3s; /* 変化時間 0.3秒 */
+    background-color: #0B4CE2; /* 背景色 */
+  }
+  
+  /*コメントフォーム*/
+  .comment_form{
+    margin-top: 50px;
+  }
+  
+  .script_comment{
+    width: 100%;
+    height: 100px;
+  }
+  
+  .number_of_comments{
+    margin-top: 50px;
+    margin-bottom: 20px;
+  }
+  
 
-.icon img{
-  width: 100%;
-  height: auto;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-}
+/*ライブ・イベント*/
+  /*共通*/
+  .posts_container{
+    width: 60%;
+    margin: 50px auto;
+  }
+  
+  .posts_container h1{
+    font-size: 24px;
+  }
+  
+  .post{
+    background-color: white;
+    margin-bottom: 20px;
+    padding: 30px 50px;
+    border: 1px solid #f19db5;
+  }
+
+  /*index.blade.php*/
+  .event_container{
+    width: 40%;
+    margin: 50px auto;
+  }
+  
+  .event{
+    background-color: white;
+    margin-bottom: 30px;
+    padding: 30px 50px;
+    border: 1px solid #f19db5;
+  }
+  
+  .event_name{
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+
+  /*show.blade.php*/
+  .post_categories{
+    margin-bottom: 7px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .category_container{
+    margin-top: 50px;
+    margin-bottom: 100px;
+  }
+  
+  .category{
+    transition: .3s; /* 変化時間 0.3秒 */
+    padding: 5px 30px; /* 内側の余白設定 */
+    border-bottom: 2px solid #f19db5;
+  }
+  
+  .category:hover{
+    transition: .3s; /* 変化時間 0.3秒 */
+    background-color: #d3d3d3;
+  }
+  
+  .number_of_posts{
+    margin-top: 50px;
+    margin-bottom: 20px;
+  }
+  
+  .post_create_button_style{
+    transition: .3s; /* 変化時間 0.3秒 */
+    padding: 20px 24px; /* 内側の余白設定 */
+    border-radius: 12px; /* 要素の角を丸くする */
+    background-color: #f19db5; /* 背景色指定 */
+    text-decoration: none; /* aタグの下線を非表示に */
+    font-size: 16px; /* フォントサイズ */
+  }
+  
+  .post_create_button_style:hover{ 
+    transition: .3s; /* 変化時間 0.3秒 */
+    background-color: #EC7E9E; /* 背景色 */
+  }
+  
+  /*detail.blade.php*/
+  
+  /*create.blade.php*/
+  .post_category_name{
+    margin-top: 10px;
+    font-size: 20px;
+  }
+  
+  /*edit.blade.php*/
+
+
+/*生写真トレード*/
+  /*共通(ライブ・イベントの共通も使用する)*/
+  
+  /*index.blade.php*/
+  .conditional_search{
+    font-size: 20px;
+    margin-top: 75px;
+    margin-bottom: 20px;
+  }
+  
+  .search_results{
+    font-size: 20px;
+    margin-top: 70px;
+    margin-bottom: -25px;
+  }
+  
+  .heading{
+    font-size: 17px;
+    margin-top:25px;
+  }
+  
+  .box{
+    background-color: #F5F5F5;
+    margin-top: 10px;
+    padding: 15px 25px;
+  }
+  
+  .series_name{
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .condition_trade_methods{
+    margin-top: -20px;
+  }
+  
+  .condition_requests{
+    margin-bottom: 20px;
+  }
+  
+  /*show.blade.php*/
+  
+  /*create.blade.php*/
+  
+
+/*チャット*/
+ /*index.blade.php*/
+ .chats_container{
+    width: 40%;
+    margin: 50px auto;
+ }
+ 
+ .chats_container h1{
+    font-size: 24px;
+    margin-bottom: 50px;
+ }
+ 
+ .chat_container{
+    background-color: white;
+    border: 1px solid #f19db5;
+    width: 99.9%;
+    height: 60px;
+    margin-bottom: 20px;
+ }
+ 
+ .chat_right_part{
+    height: 60px;
+    width: 545px;
+    vertical-align: top;
+    padding: 8px 15px;
+ }
+ 
+ .name_and_age{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+ }
+ 
+ .chat_message{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color:gray;
+ }
+
+
+/*プロフィール関連*/
+ /*profile.blade.php*/
+ .profile_container{
+    width: 50%;
+    margin: 50px auto;
+ }
+ 
+ .profile_container h1{
+    font-size: 26px;
+    margin-bottom: 30px;
+ }
+ 
+ .possessions_button_style{
+    transition: .3s; /* 変化時間 0.3秒 */
+    padding: 5px 24px; /* 内側の余白設定 */
+    border-radius: 10px; /* 要素の角を丸くする */
+    background-color: #f19db5; /* 背景色指定 */
+    text-decoration: none; /* aタグの下線を非表示に */
+    font-size: 16px;
+ }
+ 
+ .possessions_button_style:hover{
+    transition: .3s; /* 変化時間 0.3秒 */
+    background-color: #EC7E9E; /* 背景色 */
+  }
+  
+  .profile_body{
+    background-color: white;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    padding: 5px 50px 20px;
+    border: 1px solid #f19db5;
+  }
+  
+  .profile_major_heading{
+    font-size: 22px;
+    margin-top: 40px;
+  }
+  
+  .profile_heading{
+    font-size: 16.5px;
+    margin-top: 20px;
+    margin-bottom: 7px;
+  }
+  
+  .margin_bottom_15px{
+    margin-bottom: 15px;
+  }
+  
+  .margin_left_10px{
+    margin-left: 10px;
+  }
+
+ /*profile/showProssessions.blade.php*/
+ 
+ /*profile/showProfile.blade.php*/
+ 
+ /*auth/register.blade.php*/
+ .account_major_heading{
+    font-size: 23px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+ }
+ 
+ .account_heading{
+    font-size: 15px;
+    margin-top: 20px;
+    margin-bottom: 7px;
+ }
+ 
+ .account_subheading{
+    font-size: 19px;
+    margin-bottom: 20px;
+ }
+ 
+ .margin_top_60px{
+    margin-top: 60px;
+ }
+ 
+ .margin_top_50px{
+    margin-top: 50px;
+ }
+ 
+ .margin_bottom_8px{
+    margin-bottom: 8px;
+  }
+ 
+ .script_text{
+    width: 100%;
+    height: 150px;
+ }
+ 
+ .padding_30_50{
+    padding: 20px 40px;
+ }
+ 
+ /*profile/update-profile-information-form.blade.php*/
+ .question_note{
+    margin-top: 20px;
+    margin-bottom: 10px;
+ }
+ 
+ .padding_top_10px{
+    padding-top: 10px;
+ }
+ 
+ .margin_top_5px{
+    margin-top: 5px;
+ }
+ 
+ .profile_image{
+    display: none;
+ }
+ 
+ .margin_bottom_25px{
+    margin-bottom: 25px;
+ }
+ 
+ .margin_top_-1px{
+    margin-top: -1px;
+ }
+ 
+ .margin_left_15px{
+    margin-left: 15px;
+ }
+ 
+ .margin_bottom_20px{
+    margin-bottom: 20px;
+ }
+ 
+ /*auth/forgot-password.blade.php*/
+ .margin_top_-14px{
+    margin-top: -14px;
+ }
+ 
+ /*layouts/guest.blade.php*/
+ .return_top_page{
+    margin-left: -15px;
+    margin-bottom: -20px;
+ }
+ 
