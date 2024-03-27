@@ -45,50 +45,57 @@
 - **ログインページ**  
 
 
-### ２．（ナビゲーションにある）ライブ・イベントについて
+### ２．ライブ・イベントに関する投稿機能について  
+ナビゲーションの「ライブ・イベント」から、下記の「ライブ・イベント一覧ページ」に移動できます。  
+
 - **ライブ・イベント一覧ページ**  
-尚、ライブ・イベントを選択すると、下記の「投稿一覧ページ」に移動します。  
+各ライブ・イベントから下記の「投稿一覧ページ」に移動できます。  
 
 - **投稿一覧ページ**  
 各ライブ・イベント、各カテゴリー毎に投稿を一覧表示します。  
-<ins>**このようにカテゴリー分けをすることで、制作背景で述べた「課題２：ライブ内容のネタバレ」を解決できています。**</ins>  
-尚、投稿作成ボタンから下記の「投稿作成ページ」に移動できます。  
-尚、各投稿から下記の「投稿詳細ページ」に移動できます。  
+<ins>**このようにカテゴリー分けすることで、制作背景で述べた「課題２：ライブ内容のネタバレ」が解決されます。**</ins>  
+投稿作成ボタンから下記の「投稿作成ページ」に移動できます。  
+各投稿から下記の「投稿詳細ページ」に移動できます。  
 
 - **投稿作成ページ**  
-例えば、イベント名：櫻坂46「全国アリーナツアー」、カテゴリー名：連番募集　である「投稿一覧ページ」の投稿作成ボタンを押すと、そのイベント名・カテゴリー名に対応する投稿を作成できます。
+例えば、イベント名：櫻坂46「全国アリーナツアー」、カテゴリー名：連番募集　の「投稿一覧ページ」にある投稿作成ボタンを押すと、そのイベント名・カテゴリー名に対応する投稿を作成できます。
 
 - **投稿詳細ページ**  
 自身の投稿である場合、下記の「投稿編集ページ」に移動できます。  
 自身の投稿である場合、投稿を削除できます。  
-投稿にコメントすることができます。（自身のコメントは削除できます。）  
+投稿にコメントすることができます。　尚、自身のコメントは削除できます。  
 
 - **投稿編集ページ**  
 
-### ３．（ナビゲーションにある）生写真トレードについて
+### ３．生写真トレード投稿について  
+ナビゲーションの「生写真トレード」から、下記の「トレード投稿一覧ページ」に移動できます。  
+
 - **トレード投稿一覧ページ**  
-条件検索をすることができます。 
-<ins>**これにより、制作背景で述べた「課題１：生写真のトレードが面倒」を解決できています。**</ins>  
-尚、投稿作成ボタンから下記の「投稿作成ページ」に移動できます。  
-尚、各投稿から下記の「トレード投稿詳細ページ」に移動できます。  
+条件検索をすることができます。   
+<ins>**これにより、制作背景で述べた「課題１：生写真のトレードが面倒」が解決されます。**</ins>  
+投稿作成ボタンから下記の「トレード投稿作成ページ」に移動できます。  
+各投稿から下記の「トレード投稿詳細ページ」に移動できます。  
 
 - **トレード投稿作成ページ**  
 
 - **トレード投稿詳細ページ**  
-自身の投稿である場合、下記の「投稿編集ページ」に移動できます。  
+自身の投稿である場合、下記の「トレード投稿編集ページ」に移動できます。  
 自身の投稿である場合、投稿を削除できます。  
-投稿にコメントすることができます。（自身のコメントは削除できます。）  
+投稿にコメントすることができます。　尚、自身のコメントは削除できます。  
 
 - **トレード投稿編集ページ**
 
 ### ４．プロフィールについて
 
-### ５．（ナビゲーションにある）チャットについて
+### ５．チャット機能について  
+ナビゲーションの「チャット」から、下記の「チャット一覧ページ」に移動できます。  
+
 - **チャット一覧ページ**  
 チャットルームは、最新のメッセージ順に表示しています。  
-尚、各チャットルームから下記の「チャットページ」に移動できます。  
+各チャットルームから下記の「チャットページ」に移動できます。  
 
 - **チャットページ**  
+個人チャットができます。  
 チャット機能は、Pusherを用いて実装しています。  
 
 ## URL
@@ -114,61 +121,3 @@
 ### 外部サービス
 - Cloudinary
 - Pusher
-
-## About Laravel
-
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
