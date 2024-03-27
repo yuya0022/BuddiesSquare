@@ -56,7 +56,8 @@
 尚、投稿作成ボタンから下記の「投稿作成ページ」に移動できます。  
 尚、各投稿から下記の「投稿詳細ページ」に移動できます。  
 |例１<br>イベント名：櫻坂46「全国アリーナツアー」<br>カテゴリー名：連番募集|例２<br>イベント名：櫻坂46「全国アリーナツアー」<br>カテゴリー名：当落報告|
-|<img src="https://github.com/yuya0022/college-deliverable/assets/152186389/b7d51045-1adf-4cac-8677-bb75770d23e8" width="250px">|<img src="https://github.com/yuya0022/college-deliverable/assets/152186389/125b7c7b-2c73-4add-927c-6300a6fd9744" width="200px">|
+| --------------- | --------------- |
+|<img src="https://github.com/yuya0022/college-deliverable/assets/152186389/b7d51045-1adf-4cac-8677-bb75770d23e8" width="300px">|<img src="https://github.com/yuya0022/college-deliverable/assets/152186389/125b7c7b-2c73-4add-927c-6300a6fd9744" width="300px">|
 
 - **投稿作成ページ**  
 例えば、イベント名：櫻坂46「全国アリーナツアー」、カテゴリー名：連番募集　である「投稿一覧ページ」の投稿作成ボタンを押すと、そのイベント名・カテゴリー名に対応する投稿を作成できます。
