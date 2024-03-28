@@ -36,19 +36,21 @@
 これらの機能は、Laravel Breezeを用いて実装しています。  
 
 - **トップページ**  
-<img src="https://github.com/yuya0022/college-deliverable/assets/152186389/927dbe1f-a4fc-4d16-a825-b1f5f7a75826" width="400" alt="トップページ">
+<img src="https://github.com/yuya0022/college-deliverable/assets/152186389/927dbe1f-a4fc-4d16-a825-b1f5f7a75826" width="350" alt="トップページ">
 
 - **新規登録ページ**  
 <ins>**ユーザーの人柄が少しでも他者に伝わるよう、プロフィールの項目を充実させました。**</ins>  
+<img src="https://github.com/yuya0022/college-deliverable/assets/152186389/9c87a9da-ae10-4ecd-8bb0-e49104f08ce1" width="350" alt="新規登録ページ">
  
 - **ログインページ**  
-
+<img src="https://github.com/yuya0022/college-deliverable/assets/152186389/d8a63fa7-5062-48ee-b727-36a8ca9aab4e" width="350" alt="ログインページ">
 
 ### ２．ライブ・イベントに関する投稿機能について  
 ナビゲーションの「ライブ・イベント」から下記の「ライブ・イベント一覧ページ」に移動できます。  
 
 - **ライブ・イベント一覧ページ**  
 各ライブ・イベントから下記の「投稿一覧ページ」に移動できます。  
+<img src="https://github.com/yuya0022/college-deliverable/assets/152186389/e66c9256-7eea-4b5f-a9c6-fae7828b2b46" width="350" alt="ライブ・イベント一覧ページ">
 
 - **投稿一覧ページ**  
 各ライブ・イベント、各カテゴリー毎に投稿を一覧表示します。  
@@ -56,19 +58,25 @@
 投稿作成ボタンから下記の「投稿作成ページ」に移動できます。  
 各投稿から下記の「投稿詳細ページ」に移動できます。  
 
-|例１<br>イベント名：櫻坂46「全国アリーナツアー」<br>カテゴリー名：連番募集|例２<br>イベント名：櫻坂46「全国アリーナツアー」<br>カテゴリー名：当落報告|
+|イベント名：櫻坂46「全国アリーナツアー」<br>カテゴリー名：連番募集|イベント名：櫻坂46「全国アリーナツアー」<br>カテゴリー名：当落報告|
 |:---|:---|
-|   |   |
+|<img src="https://github.com/yuya0022/college-deliverable/assets/152186389/cb62471f-2152-4fb8-b9d0-f77537f2abe7" width="350" alt="投稿一覧ページ 例1">|<img src="https://github.com/yuya0022/college-deliverable/assets/152186389/db488b76-e7bd-4412-bdb3-d38aa827ce82" width="350" alt="投稿一覧ページ 例2">|
 
 - **投稿作成ページ**  
-例えば、イベント名：櫻坂46「全国アリーナツアー」、カテゴリー名：連番募集　の「投稿一覧ページ」にある投稿作成ボタンをクリックすると、そのイベント名・カテゴリー名に対応する投稿を作成できます。
+例えば、イベント名：櫻坂46「全国アリーナツアー」、カテゴリー名：連番募集　の「投稿一覧ページ」にある投稿作成ボタンをクリックすると、そのイベント名・カテゴリー名に対応する投稿を作成できます。  
+<img src="https://github.com/yuya0022/college-deliverable/assets/152186389/99c36b56-69de-4aee-a558-afbe5b91e9a6" width="350" alt="投稿作成ページ">
 
 - **投稿詳細ページ**  
 自身の投稿である場合、下記の「投稿編集ページ」に移動できます。  
 自身の投稿である場合、投稿を削除できます。  
 投稿にコメントすることができます。　尚、自身のコメントは削除できます。  
 
+|自身の投稿の場合|他人の投稿の場合|
+|:---|:---|
+|<img src="https://github.com/yuya0022/college-deliverable/assets/152186389/00c8397d-b973-405f-9970-1bf7ed352dcb" width="350" alt="投稿詳細ページ（自身の投稿）">|<img src="https://github.com/yuya0022/college-deliverable/assets/152186389/4afd72cc-972a-4da2-ae5b-fc753f186180" width="350" alt="投稿詳細ページ（他人の投稿）">|
+
 - **投稿編集ページ**  
+<img src="https://github.com/yuya0022/college-deliverable/assets/152186389/faac7490-c0ea-47ce-8599-b49566486b5d" width="350" alt="投稿編集ページ">
 
 ### ３．生写真トレード投稿について  
 ナビゲーションの「生写真トレード」から下記の「トレード投稿一覧ページ」に移動できます。  
