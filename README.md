@@ -1,4 +1,4 @@
-<img src="https://github.com/yuya0022/college-deliverable/assets/152186389/db86ff55-738d-4c26-92ff-111cc573b7ac" width="600" alt="ロゴ">
+<img src="https://github.com/yuya0022/college-deliverable/assets/152186389/db86ff55-738d-4c26-92ff-111cc573b7ac" width="700" alt="ロゴ">
 
 ## アプリ名  
 「Buddiesの広場」
@@ -87,12 +87,21 @@
 投稿作成ボタンから下記の「トレード投稿作成ページ」に移動できます。  
 各投稿から下記の「トレード投稿詳細ページ」に移動できます。  
 
+|条件検索|検索結果|
+|:---|:---|
+|<img src="https://github.com/yuya0022/college-deliverable/assets/152186389/bd217739-8551-45ab-9ff6-786249c7c8f2" width="350" alt="条件検索">|<img src="https://github.com/yuya0022/college-deliverable/assets/152186389/7fc104c7-e523-46d1-9831-9f7066b00b6e" width="350" alt="検索結果">|
+
 - **トレード投稿作成ページ**  
+
+|初期|記入後|
+|:---|:---|
+|<img src="https://github.com/yuya0022/college-deliverable/assets/152186389/ba8a1115-1638-446b-9f99-a1c349871a9d" width="350" alt="初期">|<img src="https://github.com/yuya0022/college-deliverable/assets/152186389/1c75fb6b-a2dd-4a67-a0ee-45e1e82a80c7" width="350" alt="記入後">|
 
 - **トレード投稿詳細ページ**  
 自身の投稿である場合、下記の「トレード投稿編集ページ」に移動できます。  
 自身の投稿である場合、投稿を削除できます。  
 投稿にコメントすることができます。　尚、自身のコメントは削除できます。  
+<img src="https://github.com/yuya0022/college-deliverable/assets/152186389/4f9bc10e-7301-483f-b981-0c0549017d35)" width="350" alt="トレード投稿詳細ページ">
 
 - **トレード投稿編集ページ**
 
@@ -103,28 +112,34 @@
 - **自分のプロフィールページ**  
 編集ボタンから下記の「プロフィール編集ページ」に移動できます。  
 投稿・コメント一覧ボタンから下記の「投稿・コメント一覧ページ」に移動できます。  
+<img src="https://github.com/yuya0022/college-deliverable/assets/152186389/40b59c08-018d-4106-bc4c-ebe70524c393" width="350" alt="自分のプロフィールページ">
 
 - **他人のプロフィールページ**  
 チャットボタンから下記の「チャットページ」に移動できます。    
 投稿・コメント一覧ボタンから下記の「投稿・コメント一覧ページ」に移動できます。  
+<img src="https://github.com/yuya0022/college-deliverable/assets/152186389/866caf86-26d7-4210-8f66-087ba8d8829b" width="350" alt="他人のプロフィールページ">
 
 - **プロフィール編集ページ**  
 アカウントやプロフィールの編集ができます。  
+<img src="https://github.com/yuya0022/college-deliverable/assets/152186389/ea72f785-a2f0-43e1-92fc-87b3e20b8429" width="350" alt="プロフィール編集ページ">
 
 - **投稿・コメント一覧ページ**  
 特定のユーザーの投稿・コメントを見ることができます。  
 各投稿から上記の「投稿詳細ページ」や「トレード投稿詳細ページ」に移動できます。  
+<img src="https://github.com/yuya0022/college-deliverable/assets/152186389/e593306e-2140-4496-982f-a4126b67a237" width="350" alt="投稿・コメント一覧ページ">
 
 ### ５．チャット機能について  
 ナビゲーションの「チャット」から下記の「チャット一覧ページ」に移動できます。  
 
 - **チャット一覧ページ**  
 チャットルームは、最新のメッセージ順に表示しています。  
-各チャットルームから下記の「チャットページ」に移動できます。  
+各チャットルームから下記の「チャットページ」に移動できます。 
+<img src="https://github.com/yuya0022/college-deliverable/assets/152186389/c7acfa40-2667-456f-a6ee-41447a0c7518" width="350" alt="チャット一覧ページ">
 
 - **チャットページ**  
 個人チャットができます。  
 チャット機能は、Pusherを用いて実装しています。  
+<img src="https://github.com/yuya0022/college-deliverable/assets/152186389/d2afddd5-207d-4535-b026-7fa069fefc1c" width="350" alt="チャットページ">
 
 ## デプロイ先のURL
 
