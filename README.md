@@ -147,7 +147,7 @@
 ## テストユーザー
 
 ## ER図  
-<img src="https://github.com/yuya0022/college-deliverable/assets/152186389/d7fe9202-a670-408a-a90f-d55a648711b8" alt="ER図">
+<img src="https://github.com/yuya0022/college-deliverable/assets/152186389/15c02fa5-a50d-4555-b9c2-e0d5a2b03058" alt="ER図">
 
 ## 使用技術
 
