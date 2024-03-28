@@ -1,4 +1,4 @@
-<img src="https://github.com/yuya0022/college-deliverable/assets/152186389/db86ff55-738d-4c26-92ff-111cc573b7ac" width="700" alt="ロゴ">
+<img src="https://github.com/yuya0022/college-deliverable/assets/152186389/db86ff55-738d-4c26-92ff-111cc573b7ac" width="800" alt="ロゴ">
 
 ## アプリ名  
 「Buddiesの広場」
@@ -103,7 +103,8 @@
 投稿にコメントすることができます。　尚、自身のコメントは削除できます。  
 <img src="https://github.com/yuya0022/college-deliverable/assets/152186389/4f9bc10e-7301-483f-b981-0c0549017d35)" width="350" alt="トレード投稿詳細ページ">
 
-- **トレード投稿編集ページ**
+- **トレード投稿編集ページ**  
+<img src="https://github.com/yuya0022/college-deliverable/assets/152186389/85b06754-a123-46b3-98b1-da5f8f2b71d9" width="350" alt="トレード投稿編集ページ">
 
 ### ４．プロフィールについて  
 ナビゲーションの「マイページ」から下記の「自分のプロフィールページ」に移動できます。  
@@ -145,8 +146,8 @@
 
 ## テストユーザー
 
-
-## ER図
+## ER図  
+<img src="https://github.com/yuya0022/college-deliverable/assets/152186389/d7fe9202-a670-408a-a90f-d55a648711b8" alt="ER図">
 
 ## 使用技術
 
