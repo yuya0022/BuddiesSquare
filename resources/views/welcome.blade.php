@@ -36,10 +36,15 @@
                 
                 <p class="text-8xl app_title font-semibold text-gray-700">Buddies&thinsp;の広場</p>
                 
+                <div class="text-center text-gray-700 mt-8 text-base font-semibold">
+                    <p>櫻坂46のファンの交流サイトです。</p>
+                    <p>ライブの連番相手や会場で会える人を探したり、ライブの感想を共有することができます。</p>
+                    <p>また、条件検索機能により、生写真トレードをスムーズに行えます。</p>
+                </div>
+                
                 <div class="flex justify-center mt-8 sm:items-center ">
                     <div class="text-center text-sm text-gray-500 sm:text-left">
                         </div>
-
                             @if (Route::has('login'))
                                 <div>
                                     @auth
@@ -53,7 +58,6 @@
                                     @endauth
                                 </div>
                             @endif
-                           
                         </div>
                     </div>
                 </div>

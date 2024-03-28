@@ -1,17 +1,12 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<img src="https://github.com/yuya0022/college-deliverable/assets/152186389/db86ff55-738d-4c26-92ff-111cc573b7ac" width="600" alt="ロゴ">
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
-
-## アプリ名
-
+## アプリ名  
 「Buddiesの広場」
 
-## アプリの概要
+## アプリの概要  
+櫻坂46のファン (= Buddies) の交流サイトです。  
+ライブの連番相手や会場で会える人を探したり、ライブの感想を共有することができます。  
+また、条件検索機能により、生写真トレードをスムーズに行えます。
 
 ## 制作背景
 本アプリケーションを制作しようと考えた理由は2つあります。  
@@ -41,6 +36,7 @@
 これらの機能は、Laravel Breezeを用いて実装しています。  
 
 - **トップページ**  
+<img src="https://github.com/yuya0022/college-deliverable/assets/152186389/927dbe1f-a4fc-4d16-a825-b1f5f7a75826" width="400" alt="トップページ">
 
 - **新規登録ページ**  
 <ins>**ユーザーの人柄が少しでも他者に伝わるよう、プロフィールの項目を充実させました。**</ins>  
@@ -60,10 +56,9 @@
 投稿作成ボタンから下記の「投稿作成ページ」に移動できます。  
 各投稿から下記の「投稿詳細ページ」に移動できます。  
 
-| 例１<br>イベント名：櫻坂46「全国アリーナツアー」<br>カテゴリー名：連番募集 | 例２<br>イベント名：櫻坂46「全国アリーナツアー」<br>カテゴリー名：当落報告 |  
-| -  | -  |
-|![投稿一覧ページ　例１](https://github.com/yuya0022/college-deliverable/assets/152186389/13108bf5-1d19-4d45-bf1b-bc5b58e99dfa) | ![投稿一覧ページ　例２](https://github.com/yuya0022/college-deliverable/assets/152186389/5425924d-0914-416d-be87-33de5b248284)
- |
+|例１<br>イベント名：櫻坂46「全国アリーナツアー」<br>カテゴリー名：連番募集|例２<br>イベント名：櫻坂46「全国アリーナツアー」<br>カテゴリー名：当落報告|
+|:---|:---|
+|   |   |
 
 - **投稿作成ページ**  
 例えば、イベント名：櫻坂46「全国アリーナツアー」、カテゴリー名：連番募集　の「投稿一覧ページ」にある投稿作成ボタンをクリックすると、そのイベント名・カテゴリー名に対応する投稿を作成できます。
@@ -139,6 +134,7 @@
 
 ### バックエンド
 - Laravel
+- Laravel Breeze
 
 ### データベース
 - MariaDB(MySQL)
