@@ -17,12 +17,12 @@ class MethodSeeder extends Seeder
     {
         //以下のデータについては、既にテーブルに挿入済み.
         
-        // DB::table('methods')->insert([
-        //     'method' => '郵送',
-        // ]);
+        DB::table('methods')->insert([
+            'method' => '郵送',
+        ]);
         
-        // DB::table('methods')->insert([
-        //     'method' => '現地',
-        // ]);
+        DB::table('methods')->insert([
+            'method' => '現地',
+        ]);
     }
 }

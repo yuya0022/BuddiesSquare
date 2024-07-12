@@ -47,7 +47,12 @@ class EventSeeder extends Seeder
             '櫻坂46「3rd TOUR 2023」', '櫻坂46 6th Single「Start over!」発売記念リアルミート&グリート',
             '櫻坂46「新参者 LIVE at THEATER MILANO-Za」', '櫻坂46「3rd YEAR ANNIVERSARY LIVE」',
             '櫻坂46 7th Single「承認欲求」発売記念リアルミート&グリート', '櫻坂46「7th Single BACKS LIVE!!」',
-            '櫻坂46「小林由依 卒業コンサート」', '櫻坂46「全国アリーナツアー」'
+            '櫻坂46「小林由依 卒業コンサート」', '櫻坂46「4th ARENA TOUR 2024 新・櫻前線 –Go on back?」',
+            'SAKURAZAKA46 Live，AEON CARD with YOU！Vol.3', 
+            '櫻坂46 8th Single「何歳の頃に戻りたいのか？」発売記念リアルミート&グリート',
+            '櫻坂46「8th Single BACKS LIVE!!」',
+            '櫻坂46 9th Single「自業自得」発売記念リアルミート＆グリート',
+            '櫻坂46「9th Single BACKS LIVE!!」', '櫻坂46「三期生ライブ」', '櫻坂46「4th YEAR ANNIVERSARY LIVE」'
         ];
         
         foreach($names as $name){

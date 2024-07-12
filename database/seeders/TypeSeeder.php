@@ -18,14 +18,14 @@ class TypeSeeder extends Seeder
         //以下のデータについては、既にテーブルに挿入済み.
         // 今後、生写真のタイプ名データを追加していく場合は、$namesの値を適切に変更する.
         
-        // $names = [
-        //     'ヨリ', 'チュウ', 'ヒキ', '座り'
-        // ];
+        $names = [
+            'ヨリ', 'チュウ', 'ヒキ', '座り'
+        ];
         
-        // foreach($names as $name){
-        //     DB::table('types')->insert([
-        //         'name' => $name,
-        //     ]);
-        // }
+        foreach($names as $name){
+            DB::table('types')->insert([
+                'name' => $name,
+            ]);
+        }
     }
 }
