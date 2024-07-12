@@ -52,7 +52,9 @@ class EventSeeder extends Seeder
             '櫻坂46 8th Single「何歳の頃に戻りたいのか？」発売記念リアルミート&グリート',
             '櫻坂46「8th Single BACKS LIVE!!」',
             '櫻坂46 9th Single「自業自得」発売記念リアルミート＆グリート',
-            '櫻坂46「9th Single BACKS LIVE!!」', '櫻坂46「三期生ライブ」', '櫻坂46「4th YEAR ANNIVERSARY LIVE」'
+            '櫻坂46「9th Single BACKS LIVE!!」', 
+            '櫻坂46「三期生ライブ」',
+            '櫻坂46「4th YEAR ANNIVERSARY LIVE」'
         ];
         
         foreach($names as $name){
