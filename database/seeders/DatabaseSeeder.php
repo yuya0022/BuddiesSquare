@@ -21,8 +21,8 @@ class DatabaseSeeder extends Seeder
         // $this->call(MethodSeeder::class);
         // $this->call(SeriesSeeder::class);
         // $this->call(TypeSeeder::class);
-        $this->call(EventInfoSeeder::class);
-        $this->call(PictureSeeder::class);
+        // $this->call(EventInfoSeeder::class);
+        // $this->call(PictureSeeder::class);
         
     }
 }

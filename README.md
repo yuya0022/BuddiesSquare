@@ -143,8 +143,11 @@
 <img src="https://github.com/yuya0022/college-deliverable/assets/152186389/d2afddd5-207d-4535-b026-7fa069fefc1c" width="350" alt="チャットページ">
 
 ## デプロイ先のURL
+<https://buddies-square-0b57c376daca.herokuapp.com/>
 
 ## テストユーザー
+メッセージアドレス：rika@rika  
+パスワード：rika@rika  
 
 ## ER図  
 <img src="https://github.com/yuya0022/college-deliverable/assets/152186389/15c02fa5-a50d-4555-b9c2-e0d5a2b03058" alt="ER図">
