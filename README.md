@@ -146,7 +146,7 @@
 <https://buddies-square-0b57c376daca.herokuapp.com/>
 
 ## テストユーザー
-メッセージアドレス：rika@rika  
+メールアドレス：rika@rika  
 パスワード：rika@rika  
 
 ## ER図  
